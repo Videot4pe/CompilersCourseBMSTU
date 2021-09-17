@@ -1,0 +1,1 @@
+{"nonterm":["S","E","S'iEtS"],"term":["+","(",")","*","a","b","c","d"],"productions":[{"S":["a"]},{"E":["b"]},{"S":["i","E","t","S","S'iEtS"]},{"S'iEtS":["eps"]},{"S'iEtS":["e","S"]}],"startsymbol":"S"}

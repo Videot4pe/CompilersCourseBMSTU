@@ -1,0 +1,37 @@
+{
+    "nonterm": ["EXP", "AEXP", "TERM", "FACTOR", "RELOP", "ADDOP", "MULTOP", "BLOCK", "OPLIST", "OP"],
+    "term": ["begin", "end", "+", "-", "*", "/", "-", "(", ")", "<", "<=", "=", "==", "<>", ">", ">=", "id", "const", ";"],
+    "productions": [
+        {"MULTOP": ["*"]},
+        {"MULTOP": ["/"]},
+        {"ADDOP": ["+"]},
+        {"ADDOP": ["-"]},
+        {"RELOP": ["<"]},
+        {"RELOP": ["<="]},
+        {"RELOP": ["=="]},
+        {"RELOP": ["<>"]},
+        {"RELOP": [">"]},
+        {"RELOP": [">="]},
+
+        {"FACTOR": ["const"]},
+        {"FACTOR": ["id"]},
+        {"FACTOR": ["(", "AEXP", ")"]},
+
+        {"TERM": ["TERM", "MULTOP", "FACTOR"]},
+        {"TERM": ["FACTOR"]},
+
+        {"AEXP": ["AEXP", "ADDOP", "TERM"]},
+        {"AEXP": ["TERM"]},
+
+        {"EXP": ["AEXP", "RELOP", "AEXP"]},
+        {"EXP": ["AEXP"]},
+
+        {"BLOCK": ["begin", "OPLIST", "end"]},
+
+        {"OPLIST": ["OP"]},
+        {"OPLIST": ["OPLIST", ";", "OP"]},
+
+        {"OP": ["id", "=", "EXP"]}
+    ],
+    "startsymbol": "BLOCK"
+}

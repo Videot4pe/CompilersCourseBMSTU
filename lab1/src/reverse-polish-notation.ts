@@ -1,7 +1,3 @@
-interface IReversePolishNotation {
-    parse: () => string
-}
-
 enum Precedence {
     High = 4,
     Medium = 3,
@@ -9,13 +5,16 @@ enum Precedence {
     Lowest = 1,
 }
 
-export default class ReversePolishNotation implements IReversePolishNotation {
+export default class ReversePolishNotation {
 
     private precedence = { '*': Precedence.High, '.': Precedence.Medium, '|': Precedence.Low, '(': Precedence.Lowest, ')': Precedence.Lowest }
     private outputQueue: Array<string> = []
     private stack: Array<string> = []
 
-    constructor(private regex: string) {}
+    constructor(private regex: string) {
+        this.regex += '#'
+        console.log('Преобразованное выражение: ', this.regex)
+    }
 
     public parse() {
 

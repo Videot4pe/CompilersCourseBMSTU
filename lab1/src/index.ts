@@ -1,9 +1,18 @@
 import RegexParser from './regex-parser';
+import * as readline from "readline";
 
-const regexParser = new RegexParser('a(a|b)*abb')
-// const regexParser = new RegexParser('a*b*(a|b)abc');
-// const regexParser = new RegexParser('a(a|b)*b');
-// const regexParser = new RegexParser('(aa)|(bb)');
+const rl= readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-const parsed = regexParser.parse();
-console.log('Parsed: ', parsed)
+rl.question('Введите выражение: ', regex => {
+    const regexParser = new RegexParser(regex || '(a|b)*abb')
+    const minDfa = regexParser.parse();
+
+    console.log('\nВведите выражение для проверки: ')
+    rl.on('line', checkRegex => {
+        minDfa.simulate(checkRegex)
+        console.log('\nВведите выражение для проверки: ')
+    })
+})

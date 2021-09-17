@@ -1,0 +1,9 @@
+{
+    "nonterm": ["A"],
+    "term": ["+", "(", ")", "*", "a", "b"],
+    "productions": [
+        {"A": ["A", "a"]},
+        {"A": ["b"]}
+    ],
+    "startsymbol": "A"
+}

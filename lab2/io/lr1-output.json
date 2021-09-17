@@ -1,0 +1,1 @@
+{"nonterm":["A","A'"],"term":["+","(",")","*","a","b"],"productions":[{"A'":["a","A'"]},{"A":["b","A'"]},{"A'":["eps"]}],"startsymbol":"A"}
